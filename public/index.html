@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>FocusTube - Distraction-Free YouTube Learning</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="nav-brand">
+        FocusTube <span class="brand-badge">Engineering Portal</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="focus.html">Focus Player</a></li>
+        <li><a href="playlists.html">Playlists</a></li>
+        <li><a href="notes.html">Notes</a></li>
+        <li id="nav-auth-item"><a href="login.html" class="btn btn-sm">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content Container -->
+  <main>
+
+    <!-- Hero / Search Section -->
+    <section class="hero-box">
+      <h1>FocusTube</h1>
+      <p>A distraction-free educational video portal for Indian engineering students. Search official YouTube lectures across all engineering branches without sidebar algorithms, shorts, or comments.</p>
+
+      <!-- Search Type Mode Selector (Videos vs Playlists) -->
+      <div class="search-type-selector">
+        <label>
+          <input type="radio" name="search-type" value="video" checked id="search-type-video">
+          <span>▶ Search Educational Videos</span>
+        </label>
+        <label>
+          <input type="radio" name="search-type" value="playlist" id="search-type-playlist">
+          <span>📑 Search YouTube Playlists</span>
+        </label>
+      </div>
+
+      <!-- Main Search Bar -->
+      <form id="search-form" class="search-bar-container">
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="Search engineering lectures (e.g. Binary Search Tree, CPU Scheduling, Thermodynamics, Signals & Systems, GATE)..."
+          autocomplete="off"
+        >
+        <button type="submit" class="btn" id="search-submit-btn">Search YouTube</button>
+        <button type="button" id="clear-search-btn" class="btn btn-secondary">Clear</button>
+      </form>
+
+      <!-- Engineering Branch Filters -->
+      <div class="filter-row">
+        <span class="filter-row-label">Engineering Discipline:</span>
+        <div class="categories-container" id="branch-chips-container">
+          <button class="category-chip active" data-branch="All">All Disciplines</button>
+          <button class="category-chip" data-branch="CSE">CSE / IT</button>
+          <button class="category-chip" data-branch="AI/ML">AI / ML &amp; Data Science</button>
+          <button class="category-chip" data-branch="ECE">ECE</button>
+          <button class="category-chip" data-branch="Electrical">Electrical (EEE)</button>
+          <button class="category-chip" data-branch="Mechanical">Mechanical</button>
+          <button class="category-chip" data-branch="Civil">Civil</button>
+          <button class="category-chip" data-branch="Mathematics">Engg Mathematics</button>
+          <button class="category-chip" data-branch="GATE">GATE Preparation</button>
+        </div>
+      </div>
+
+      <!-- Core Subject Quick-Filters -->
+      <div class="filter-row">
+        <span class="filter-row-label">Core Subject Quick-Filter:</span>
+        <div class="categories-container" id="subject-chips-container">
+          <button class="category-chip active" data-subject="All">All Subjects</button>
+          <button class="category-chip" data-subject="Data Structures">DSA</button>
+          <button class="category-chip" data-subject="Operating Systems">Operating Systems</button>
+          <button class="category-chip" data-subject="DBMS">DBMS</button>
+          <button class="category-chip" data-subject="Computer Networks">Computer Networks</button>
+          <button class="category-chip" data-subject="Signals and Systems">Signals &amp; Systems</button>
+          <button class="category-chip" data-subject="Thermodynamics">Thermodynamics</button>
+          <button class="category-chip" data-subject="Fluid Mechanics">Fluid Mechanics</button>
+          <button class="category-chip" data-subject="Structural Analysis">Structural Analysis</button>
+          <button class="category-chip" data-subject="Web Development">Web Development</button>
+        </div>
+      </div>
+
+      <!-- Top Indian Lecture Channels -->
+      <div class="filter-row">
+        <span class="filter-row-label">Top Indian Lecture Channels:</span>
+        <div class="categories-container" id="channel-quick-container">
+          <button class="category-chip" data-channel-query="Gate Smashers">Gate Smashers</button>
+          <button class="category-chip" data-channel-query="Neso Academy">Neso Academy</button>
+          <button class="category-chip" data-channel-query="Abdul Bari">Abdul Bari</button>
+          <button class="category-chip" data-channel-query="Knowledge Gate Sanchit Sir">Knowledge Gate</button>
+          <button class="category-chip" data-channel-query="Jenny's Lectures CS IT">Jenny's Lectures</button>
+          <button class="category-chip" data-channel-query="5 Minutes Engineering">5 Minutes Engg</button>
+          <button class="category-chip" data-channel-query="NPTEL">NPTEL</button>
+        </div>
+      </div>
+
+      <!-- YouTube Data API v3 Configuration Box (Collapsible) -->
+      <div style="margin-top: 14px;">
+        <button type="button" id="toggle-api-box" class="btn btn-secondary btn-sm">▼ YouTube Data API v3 Settings</button>
+      </div>
+
+      <div id="api-config-box" style="display: none; margin-top: 12px; padding: 14px; background: #ffffff; border: 1px solid #cccccc; border-radius: 4px; text-align: left; max-width: 720px; margin-left: auto; margin-right: auto;">
+        <label for="api-key-input" style="font-size: 13px; font-weight: bold; display: block; margin-bottom: 5px;">
+          Google Cloud YouTube Data API v3 Key:
+        </label>
+        <div style="display: flex; gap: 8px;">
+          <input type="text" id="api-key-input" placeholder="Paste your AIzaSy... API key here (saved locally in your browser)">
+          <button type="button" id="save-api-key-btn" class="btn btn-sm">Save Key</button>
+          <button type="button" id="clear-api-key-btn" class="btn btn-secondary btn-sm">Clear</button>
+        </div>
+        <p style="font-size: 12px; color: #555555; margin-top: 8px; line-height: 1.4;">
+          <strong>Server &amp; Client Configuration:</strong> You can configure the API key in the backend <code>.env</code> file (<code>YOUTUBE_API_KEY=...</code>) or paste it here. When configured, FocusTube queries real-time YouTube Data API v3 results. When not configured, FocusTube uses pre-loaded BTech engineering courses.
+        </p>
+      </div>
+
+      <!-- Data Source Status Banner -->
+      <div class="data-source-status">
+        <div id="data-source-badge">
+          <strong>Data Source:</strong> <span style="color: #0056b3;">● Checking connection...</span>
+        </div>
+        <div id="result-count" style="color: #555555; font-weight: bold;">
+          Loading courseware...
+        </div>
+      </div>
+    </section>
+
+    <!-- Error / Quota Notice Banner -->
+    <div id="api-error-banner" class="alert alert-warning" style="display: none;">
+      <span id="api-error-message"></span>
+    </div>
+
+    <!-- Recently Watched History Shelf -->
+    <section id="recent-history-section" class="light-section" style="display: none; padding: 14px 18px; margin-bottom: 22px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <h2 style="font-size: 16px; color: #0056b3;">🕒 Recently Watched Lectures</h2>
+        <button type="button" id="clear-history-btn" class="btn btn-secondary btn-sm" style="font-size: 11px;">Clear History</button>
+      </div>
+      <div id="recent-history-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px;">
+        <!-- Populated by main.js -->
+      </div>
+    </section>
+
+    <!-- Video / Playlist Results Section -->
+    <section>
+      <div class="section-header">
+        <h2 id="results-heading">Engineering Educational Videos</h2>
+        <span style="font-size: 13px; color: #666666;">Click any lecture to open in Focus Player</span>
+      </div>
+
+      <!-- Grid for Videos or Playlists -->
+      <div id="video-grid" class="video-grid">
+        <!-- Dynamically rendered by main.js -->
+      </div>
+
+      <!-- Pagination / Load More Button -->
+      <div id="load-more-container" class="load-more-container" style="display: none;">
+        <button id="load-more-btn" class="btn btn-secondary">Load More Results &darr;</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Simple Footer -->
+  <footer>
+    <p><strong>FocusTube</strong> - Distraction-Free YouTube Learning Portal for Engineering Students</p>
+    <p>College Mini-Project | HTML, CSS, JavaScript, Node.js, Express.js, MongoDB &amp; YouTube Data API v3</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/sample-data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

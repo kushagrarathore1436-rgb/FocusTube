@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusTube - Student Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="nav-brand">
+        FocusTube <span class="brand-badge">Account</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="focus.html">Focus Player</a></li>
+        <li><a href="playlists.html">Playlists</a></li>
+        <li><a href="notes.html">Notes</a></li>
+        <li id="nav-auth-item"><a href="login.html" class="active">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="auth-container">
+      
+      <!-- Already Logged In Box -->
+      <div id="already-logged-in-box" style="display: none; text-align: center;">
+        <h2 style="font-size: 18px; color: #0056b3; margin-bottom: 8px;">Student Profile</h2>
+        <p style="font-size: 14px; color: #555555; margin-bottom: 4px;">Logged in as:</p>
+        <p style="font-size: 16px; font-weight: bold; color: #222222; margin-bottom: 2px;" id="profile-name">Rahul Sharma</p>
+        <p style="font-size: 13px; color: #777777; margin-bottom: 16px;" id="profile-email">22CSE045</p>
+
+        <div style="display: flex; gap: 8px; justify-content: center;">
+          <a href="index.html" class="btn btn-sm">Go to Lectures</a>
+          <button onclick="logoutUser()" class="btn btn-danger btn-sm">Logout</button>
+        </div>
+      </div>
+
+      <!-- Auth Forms Container -->
+      <div id="auth-forms-container">
+        <!-- Tabs -->
+        <div class="auth-tabs">
+          <div id="tab-login" class="auth-tab active">Student Login</div>
+          <div id="tab-register" class="auth-tab">New Registration</div>
+        </div>
+
+        <!-- 1. Login Form -->
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-identifier">College Roll No or Email:</label>
+            <input type="text" id="login-identifier" placeholder="e.g. 22CSE045 or student@college.edu" required>
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" placeholder="Enter your password" required>
+          </div>
+
+          <button type="submit" class="btn" style="width: 100%; margin-top: 5px;">Login to FocusTube</button>
+        </form>
+
+        <!-- 2. Register Form -->
+        <form id="register-form" style="display: none;">
+          <div class="form-group">
+            <label for="reg-name">Full Name:</label>
+            <input type="text" id="reg-name" placeholder="e.g. Rahul Sharma" required>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-roll">College Roll No:</label>
+            <input type="text" id="reg-roll" placeholder="e.g. 22CSE045" required>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-email">College Email (Optional):</label>
+            <input type="email" id="reg-email" placeholder="e.g. rahul@college.edu">
+          </div>
+
+          <div class="form-group">
+            <label for="reg-password">Password:</label>
+            <input type="password" id="reg-password" placeholder="Create a password" required>
+          </div>
+
+          <button type="submit" class="btn" style="width: 100%; margin-top: 5px;">Register Account</button>
+        </form>
+
+        <!-- Demo Account Auto-Fill Box for Project Viva -->
+        <div class="demo-account-box">
+          <p style="font-weight: bold; margin-bottom: 4px; color: #004085;">
+            🎓 Quick Viva Demonstration:
+          </p>
+          <p style="font-size: 12px; color: #555555; margin-bottom: 8px;">
+            Click the button below to auto-fill sample student credentials for fast testing.
+          </p>
+          <button type="button" id="fill-demo-btn" class="btn btn-secondary btn-sm" style="width: 100%;">
+            ⚡ Auto-fill Demo Student
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>FocusTube</strong> - Distraction-Free YouTube Learning Portal</p>
+    <p>College Mini-Project | HTML, CSS, JavaScript, Node.js, Express.js, MongoDB</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/common.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

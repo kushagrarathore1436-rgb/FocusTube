@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>FocusTube - Distraction-Free Focus Player</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="nav-brand">
+        FocusTube <span class="brand-badge">Focus Player</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="focus.html" class="active">Focus Player</a></li>
+        <li><a href="playlists.html">Playlists</a></li>
+        <li><a href="notes.html">Notes</a></li>
+        <li id="nav-auth-item"><a href="login.html" class="btn btn-sm">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+
+    <div style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+      <a href="index.html" class="btn btn-secondary btn-sm">&larr; Back to Lecture Search</a>
+      <span id="player-mode-tag" style="font-size: 13px; color: #555555; background: #e9ecef; padding: 4px 10px; border-radius: 3px;">
+        Standard Video Mode
+      </span>
+    </div>
+
+    <!-- Embedding Restriction Alert (Hidden by default, shown by YouTube IFrame API on error 101/150) -->
+    <div id="embed-error-box" class="alert alert-warning" style="display: none;">
+      <strong>Notice:</strong> <span id="embed-error-text">This video cannot be embedded due to content owner restrictions.</span>
+      <div style="margin-top: 8px;">
+        <a id="external-watch-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Watch Directly on YouTube &nearr;</a>
+        <a href="index.html" class="btn btn-secondary btn-sm" style="margin-left: 6px;">Choose Another Lecture</a>
+      </div>
+    </div>
+
+    <!-- Player & Focus Layout -->
+    <div class="player-page-layout">
+
+      <!-- Left Column: Official YouTube IFrame Player & Details -->
+      <section class="video-player-section">
+        
+        <!-- Official YouTube Player Container -->
+        <div class="embed-container">
+          <div id="youtube-player"></div>
+        </div>
+
+        <!-- Video & Playlist Details -->
+        <div class="video-details-box">
+          <h1 id="video-title">Loading Educational Lecture...</h1>
+          
+          <div class="channel-info">
+            <span id="video-channel">Channel: ...</span>
+            <span id="video-category" class="video-category-tag">Engineering</span>
+          </div>
+
+          <!-- Video Actions -->
+          <div class="video-actions-bar">
+            <button id="add-playlist-btn" class="btn btn-secondary btn-sm">+ Save to Study Playlist</button>
+            <a href="notes.html" class="btn btn-secondary btn-sm">View All Study Notes</a>
+            <a id="direct-yt-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="margin-left: auto;">Open on YouTube &nearr;</a>
+          </div>
+
+          <!-- Distraction-Free Philosophy Banner -->
+          <div class="distraction-notice">
+            <strong>Distraction-Free Focus Mode:</strong> Algorithmic sidebars, comments, and related videos are completely blocked to protect your study time. FocusTube plays official YouTube streams directly without copying, rehosting, or downloading content.
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Right Column: Study Tools (Pomodoro Timer & Quick Notes) -->
+      <aside class="study-sidebar">
+
+        <!-- 1. Pomodoro Timer Box -->
+        <div class="pomodoro-card">
+          <h3>Study Pomodoro Timer</h3>
+          
+          <div class="pomodoro-mode-selector">
+            <button type="button" id="mode-study-btn" class="btn btn-sm">Study (25m)</button>
+            <button type="button" id="mode-break-btn" class="btn btn-secondary btn-sm">Break (5m)</button>
+          </div>
+
+          <div id="timer-mode-label" style="font-size: 13px; color: #555555; margin-bottom: 8px;">
+            Focus Study Mode (25 min)
+          </div>
+
+          <!-- Big Monospace Timer Display -->
+          <div id="timer-display" class="timer-display">
+            25:00
+          </div>
+
+          <div class="timer-controls">
+            <button id="timer-start-btn" class="btn btn-success btn-sm">Start</button>
+            <button id="timer-pause-btn" class="btn btn-secondary btn-sm" style="display: none;">Pause</button>
+            <button id="timer-reset-btn" class="btn btn-danger btn-sm">Reset</button>
+          </div>
+
+          <div class="timer-status-text">
+            Pomodoro Sessions Completed: <strong id="session-count">0</strong>
+          </div>
+        </div>
+
+        <!-- 2. Quick Notes Box -->
+        <div class="quick-notes-card">
+          <h3>
+            <span>Lecture Notes</span>
+            <span style="font-size: 11px; font-weight: normal; color: #666666;">Auto-saved</span>
+          </h3>
+
+          <form id="quick-note-form">
+            <div class="note-input-group">
+              <textarea 
+                id="quick-note-text" 
+                placeholder="Write key concepts, formula, or exam points from this lecture..."
+                required
+              ></textarea>
+            </div>
+
+            <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+              <input 
+                type="text" 
+                id="quick-note-timestamp" 
+                placeholder="Timestamp (e.g. 10:45)" 
+                style="max-width: 140px; font-size: 12px; padding: 4px 8px;"
+              >
+              <button type="button" id="insert-time-btn" class="btn btn-secondary btn-sm">Set Time</button>
+              <button type="submit" class="btn btn-sm" style="margin-left: auto;">Save Note</button>
+            </div>
+          </form>
+
+          <!-- List of Notes taken for this video -->
+          <div style="font-size: 13px; font-weight: bold; margin-bottom: 6px; color: #444444;">
+            Notes for this Video:
+          </div>
+          <div id="video-notes-list" class="saved-notes-list">
+            <!-- Populated by player.js -->
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>FocusTube</strong> - Distraction-Free YouTube Learning Portal for Engineering Students</p>
+    <p>College Mini-Project | HTML, CSS, JavaScript, Node.js, Express.js, MongoDB &amp; YouTube Data API v3</p>
+  </footer>
+
+  <!-- Official YouTube IFrame Player API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <!-- Scripts -->
+  <script src="js/sample-data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/player.js"></script>
+</body>
+</html>

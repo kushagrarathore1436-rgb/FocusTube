@@ -1,0 +1,888 @@
+/* 
+  FocusTube - Stylesheet
+  A clean, simple student project design for BTech CSE Full Stack Development.
+  Uses plain white background, light-grey sections, Arial font, simple blue buttons.
+  No gradients, no glassmorphism, no complex animations.
+*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: #222222;
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===================================================
+   NAVIGATION BAR
+   =================================================== */
+header {
+  background-color: #ffffff;
+  border-bottom: 2px solid #0056b3;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #0056b3;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-brand .brand-badge {
+  background-color: #0056b3;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: normal;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333333;
+  font-size: 15px;
+  padding: 6px 12px;
+  border-radius: 3px;
+  transition: background-color 0.15s ease;
+}
+
+.nav-links li a:hover {
+  background-color: #f0f0f0;
+  color: #0056b3;
+}
+
+.nav-links li a.active {
+  background-color: #0056b3;
+  color: #ffffff;
+}
+
+.user-status {
+  font-size: 13px;
+  color: #555555;
+  border-left: 1px solid #cccccc;
+  padding-left: 12px;
+  margin-left: 5px;
+}
+
+/* ===================================================
+   MAIN LAYOUT & CONTAINERS
+   =================================================== */
+main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Light grey sections */
+.light-section {
+  background-color: #f7f7f7;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 18px;
+  margin-bottom: 22px;
+}
+
+/* ===================================================
+   BUTTONS & FORM CONTROLS
+   =================================================== */
+.btn {
+  display: inline-block;
+  background-color: #0066cc;
+  color: #ffffff;
+  border: 1px solid #0056b3;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: #004c99;
+}
+
+.btn-secondary {
+  background-color: #f0f0f0;
+  color: #333333;
+  border: 1px solid #cccccc;
+}
+
+.btn-secondary:hover {
+  background-color: #e2e2e2;
+  color: #111111;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #1e7e34;
+  color: #ffffff;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-danger {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background-color: #c9302c;
+}
+
+.btn-sm {
+  padding: 5px 9px;
+  font-size: 12px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #222222;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #0066cc;
+}
+
+/* ===================================================
+   HOMEPAGE SEARCH & FILTER CONTROLS
+   =================================================== */
+.hero-box {
+  background-color: #f8f9fa;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  padding: 24px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.hero-box h1 {
+  font-size: 26px;
+  color: #0056b3;
+  margin-bottom: 8px;
+}
+
+.hero-box p {
+  font-size: 15px;
+  color: #555555;
+  margin-bottom: 16px;
+}
+
+/* Search Type Mode Switcher (Videos vs Playlists) */
+.search-type-selector {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: #333333;
+}
+
+.search-type-selector label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+}
+
+.search-bar-container {
+  display: flex;
+  max-width: 720px;
+  margin: 0 auto 16px auto;
+  gap: 8px;
+}
+
+.search-bar-container input {
+  flex: 1;
+  font-size: 15px;
+  padding: 10px 14px;
+}
+
+.search-bar-container button {
+  padding: 10px 18px;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+/* Engineering Branch & Subject Chips */
+.filter-row {
+  margin-top: 10px;
+  text-align: left;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filter-row-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #555555;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.categories-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.category-chip {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  color: #444444;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.category-chip:hover {
+  background-color: #e9ecef;
+  border-color: #0066cc;
+}
+
+.category-chip.active {
+  background-color: #0056b3;
+  color: #ffffff;
+  border-color: #0056b3;
+}
+
+/* API Status banner */
+.data-source-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eef5fc;
+  border: 1px solid #cce2f7;
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 4px;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.data-source-status span {
+  color: #004085;
+}
+
+/* ===================================================
+   VIDEO & PLAYLIST GRID
+   =================================================== */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.section-header h2 {
+  font-size: 20px;
+  color: #333333;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.video-card {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-card:hover {
+  border-color: #0066cc;
+}
+
+.thumbnail-wrap {
+  position: relative;
+  width: 100%;
+  height: 165px;
+  background-color: #eeeeee;
+  overflow: hidden;
+}
+
+.thumbnail-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.duration-tag {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #ffffff;
+  font-size: 11px;
+  padding: 2px 5px;
+  border-radius: 2px;
+}
+
+.playlist-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background-color: rgba(0, 86, 179, 0.9);
+  color: #ffffff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+.video-info {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.video-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #222222;
+  margin-bottom: 6px;
+  line-height: 1.3;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.video-title:hover {
+  color: #0066cc;
+}
+
+.video-channel {
+  font-size: 13px;
+  color: #666666;
+  margin-bottom: 4px;
+}
+
+.video-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #777777;
+  margin-bottom: 12px;
+}
+
+.video-category-tag {
+  background-color: #e9ecef;
+  color: #495057;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-size: 11px;
+}
+
+.video-card-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 6px;
+}
+
+.video-card-actions .btn {
+  flex: 1;
+}
+
+/* Pagination / Load More Box */
+.load-more-container {
+  text-align: center;
+  margin: 20px 0 35px 0;
+}
+
+.load-more-container .btn {
+  padding: 10px 24px;
+  font-size: 15px;
+}
+
+/* ===================================================
+   WATCH / FOCUS PLAYER PAGE LAYOUT
+   =================================================== */
+.player-page-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.video-player-section {
+  background-color: #ffffff;
+}
+
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+  overflow: hidden;
+  background-color: #000000;
+  border-radius: 4px;
+  border: 1px solid #333333;
+}
+
+.embed-container iframe,
+.embed-container #youtube-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-details-box {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.video-details-box h1 {
+  font-size: 20px;
+  color: #222222;
+  margin-bottom: 8px;
+}
+
+.video-details-box .channel-info {
+  font-size: 14px;
+  color: #555555;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.video-actions-bar {
+  display: flex;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e0e0e0;
+  flex-wrap: wrap;
+}
+
+.distraction-notice {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background-color: #e8f4fd;
+  border-left: 3px solid #0066cc;
+  font-size: 13px;
+  color: #004085;
+}
+
+/* Right Column: Study Tools (Timer + Notes) */
+.study-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Pomodoro Timer Box */
+.pomodoro-card {
+  background-color: #fdfdfd;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 18px;
+  text-align: center;
+}
+
+.pomodoro-card h3 {
+  font-size: 17px;
+  color: #0056b3;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 8px;
+}
+
+.pomodoro-mode-selector {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.timer-display {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 44px;
+  font-weight: bold;
+  color: #222222;
+  background-color: #f0f4f8;
+  border: 1px solid #d0d7de;
+  border-radius: 4px;
+  padding: 8px 0;
+  margin-bottom: 12px;
+}
+
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.timer-status-text {
+  font-size: 13px;
+  color: #666666;
+}
+
+/* Quick Notes Box on Player Page */
+.quick-notes-card {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.quick-notes-card h3 {
+  font-size: 17px;
+  color: #333333;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-input-group {
+  margin-bottom: 10px;
+}
+
+.note-input-group textarea {
+  height: 90px;
+  resize: vertical;
+  margin-bottom: 8px;
+}
+
+.saved-notes-list {
+  max-height: 240px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  background-color: #fafafa;
+  padding: 8px;
+}
+
+.note-item {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  padding: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.note-item:last-child {
+  margin-bottom: 0;
+}
+
+.note-item-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #777777;
+  margin-bottom: 4px;
+}
+
+.note-item-text {
+  color: #222222;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.note-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+/* ===================================================
+   NOTES PAGE & PLAYLISTS PAGE
+   =================================================== */
+.page-title {
+  font-size: 22px;
+  color: #333333;
+  margin-bottom: 16px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #0056b3;
+}
+
+.notes-page-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+.note-form-card {
+  background-color: #f8f9fa;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 4px;
+}
+
+.playlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.playlist-card {
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  padding: 15px;
+  background-color: #ffffff;
+}
+
+.playlist-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.playlist-card-header h3 {
+  font-size: 17px;
+  color: #0056b3;
+}
+
+.playlist-video-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eeeeee;
+  font-size: 13px;
+}
+
+.playlist-video-item:last-child {
+  border-bottom: none;
+}
+
+/* ===================================================
+   LOGIN / AUTH PAGE
+   =================================================== */
+.auth-container {
+  max-width: 420px;
+  margin: 30px auto;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  background-color: #ffffff;
+  padding: 24px;
+}
+
+.auth-tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.auth-tab {
+  flex: 1;
+  text-align: center;
+  padding: 8px;
+  cursor: pointer;
+  background-color: #f7f7f7;
+  color: #555555;
+  font-weight: bold;
+  font-size: 14px;
+  border: 1px solid transparent;
+  border-bottom: none;
+}
+
+.auth-tab.active {
+  background-color: #ffffff;
+  color: #0056b3;
+  border-color: #cccccc #cccccc #ffffff #cccccc;
+}
+
+.demo-account-box {
+  margin-top: 16px;
+  padding: 10px;
+  background-color: #eef5fc;
+  border: 1px dashed #0056b3;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* ===================================================
+   MODAL / TOAST / ALERT
+   =================================================== */
+.alert {
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 30px;
+  color: #777777;
+  background-color: #fdfdfd;
+  border: 1px dashed #dddddd;
+  border-radius: 4px;
+}
+
+/* ===================================================
+   FOOTER
+   =================================================== */
+footer {
+  background-color: #f4f4f4;
+  border-top: 1px solid #dddddd;
+  padding: 16px 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #666666;
+  margin-top: auto;
+}
+
+footer p {
+  margin: 4px 0;
+}
+
+footer a {
+  color: #0056b3;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN (BASIC MEDIA QUERIES)
+   =================================================== */
+@media (max-width: 900px) {
+  .player-page-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .notes-page-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .user-status {
+    border-left: none;
+    padding-left: 0;
+    margin-top: 4px;
+  }
+
+  .search-bar-container {
+    flex-direction: column;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}

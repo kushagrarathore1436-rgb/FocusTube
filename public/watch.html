@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FocusTube - Redirecting to Focus Player</title>
+  <script>
+    // Seamless redirect preserving all query parameters (video ID, playlist ID, title, channel)
+    const currentParams = window.location.search;
+    window.location.replace("focus.html" + currentParams);
+  </script>
+</head>
+<body>
+  <p style="font-family: Arial; padding: 20px;">
+    Redirecting to <a href="focus.html">FocusTube Focus Player</a>...
+  </p>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusTube - Study Notes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="nav-brand">
+        FocusTube <span class="brand-badge">Study Notes</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="focus.html">Focus Player</a></li>
+        <li><a href="playlists.html">Playlists</a></li>
+        <li><a href="notes.html" class="active">Notes</a></li>
+        <li id="nav-auth-item"><a href="login.html" class="btn btn-sm">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h1 class="page-title">Engineering Study Notes</h1>
+
+    <div class="notes-page-grid">
+      
+      <!-- Left Column: Add / Edit Note Form -->
+      <section>
+        <div class="note-form-card">
+          <h2 id="form-heading" style="font-size: 18px; color: #0056b3; margin-bottom: 12px; border-bottom: 1px solid #e0e0e0; padding-bottom: 6px;">
+            Create New Study Note
+          </h2>
+
+          <form id="note-form">
+            <div class="form-group">
+              <label for="note-title-input">Lecture / Topic Title:</label>
+              <input type="text" id="note-title-input" placeholder="e.g. Binary Search Tree Inorder Traversal" required>
+            </div>
+
+            <div class="form-group">
+              <label for="note-subject-select">Subject Category:</label>
+              <select id="note-subject-select">
+                <!-- Dynamically populated or default options -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="note-timestamp-input">Video Timestamp (Optional):</label>
+              <input type="text" id="note-timestamp-input" placeholder="e.g. 14:20">
+            </div>
+
+            <div class="form-group">
+              <label for="note-content-input">Note Content &amp; Key Points:</label>
+              <textarea 
+                id="note-content-input" 
+                rows="7" 
+                placeholder="Write your study notes, formulas, step-by-step algorithms, or exam points here..."
+                required
+              ></textarea>
+            </div>
+
+            <div style="display: flex; gap: 8px;">
+              <button type="submit" id="save-note-btn" class="btn">Save Note</button>
+              <button type="button" id="cancel-edit-btn" class="btn btn-secondary" style="display: none;">Cancel</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Note Tip Box -->
+        <div style="margin-top: 15px; padding: 12px; background-color: #f0f7ff; border: 1px solid #cfe2ff; border-radius: 4px; font-size: 13px; color: #084298;">
+          <strong>Tip:</strong> You can also take notes directly while watching videos on the <a href="focus.html" style="color: #0056b3; text-decoration: underline;">Focus Player</a>. They will appear here automatically!
+        </div>
+      </section>
+
+      <!-- Right Column: Search & Saved Notes List -->
+      <section>
+        <!-- Filter and Search Header -->
+        <div class="light-section" style="padding: 12px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <input 
+            type="text" 
+            id="search-notes-input" 
+            placeholder="Search notes by keyword or subject..." 
+            style="max-width: 320px;"
+          >
+          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <span id="notes-sync-status" style="font-size: 11px; background: #e8f4fd; color: #0056b3; padding: 4px 8px; border-radius: 3px; border: 1px solid #cce2f7;">💾 Local &amp; Server Synced</span>
+            <span id="notes-total-count" style="font-size: 13px; color: #555555; font-weight: bold;">0 notes</span>
+            <button id="export-notes-btn" class="btn btn-secondary btn-sm" title="Download your notes as a .txt file">📥 Export as .txt</button>
+          </div>
+        </div>
+
+        <!-- All Notes Container -->
+        <div id="all-notes-container">
+          <!-- Rendered by notes.js -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>FocusTube</strong> - Distraction-Free YouTube Learning Portal</p>
+    <p>College Mini-Project | HTML, CSS, JavaScript, Node.js, Express.js, MongoDB</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/common.js"></script>
+  <script src="js/notes.js"></script>
+</body>
+</html>

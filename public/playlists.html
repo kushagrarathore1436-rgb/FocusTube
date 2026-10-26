@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>FocusTube - Study Playlists</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="nav-brand">
+        FocusTube <span class="brand-badge">Playlists</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="focus.html">Focus Player</a></li>
+        <li><a href="playlists.html" class="active">Playlists</a></li>
+        <li><a href="notes.html">Notes</a></li>
+        <li id="nav-auth-item"><a href="login.html" class="btn btn-sm">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h1 class="page-title">Engineering Study Playlists</h1>
+
+    <!-- 1. Search YouTube Playlists Section -->
+    <div class="light-section" style="margin-bottom: 25px;">
+      <h2 style="font-size: 17px; color: #0056b3; margin-bottom: 8px;">Explore Official YouTube Playlists</h2>
+      <p style="font-size: 13px; color: #555555; margin-bottom: 12px;">Full semester course playlists from top Indian educators (Gate Smashers, Neso Academy, Abdul Bari, Knowledge Gate, NPTEL) and university faculties.</p>
+      
+      <!-- Top Indian Channels Quick Filter Bar -->
+      <div style="margin-bottom: 14px;">
+        <span style="font-size: 12px; font-weight: bold; color: #333333; display: block; margin-bottom: 6px;">
+          🇮🇳 Top Indian Lecture Channels:
+        </span>
+        <div class="categories-container" id="channel-chips-container" style="display: flex; flex-wrap: wrap; gap: 6px;">
+          <button type="button" class="category-chip active" data-channel="All">All Top Channels</button>
+          <button type="button" class="category-chip" data-channel="Gate Smashers">Gate Smashers</button>
+          <button type="button" class="category-chip" data-channel="Neso Academy">Neso Academy</button>
+          <button type="button" class="category-chip" data-channel="Abdul Bari">Abdul Bari</button>
+          <button type="button" class="category-chip" data-channel="Knowledge Gate">Knowledge Gate</button>
+          <button type="button" class="category-chip" data-channel="Jenny's Lectures CS IT">Jenny's Lectures</button>
+          <button type="button" class="category-chip" data-channel="NPTEL">NPTEL</button>
+        </div>
+      </div>
+
+      <form id="playlist-search-form" style="display: flex; gap: 8px; max-width: 650px;">
+        <input 
+          type="text" 
+          id="playlist-search-input" 
+          placeholder="Search course playlists (e.g. Gate Smashers OS, Neso Academy Digital Electronics, DBMS)..." 
+          required
+        >
+        <button type="submit" class="btn" style="white-space: nowrap;">Search Playlists</button>
+      </form>
+
+      <!-- Container for YouTube Playlist search results -->
+      <div id="yt-playlists-results" class="video-grid" style="margin-top: 15px; margin-bottom: 0;">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+
+    <!-- 2. Personal Custom Study Playlists Section -->
+    <section>
+      <div class="section-header">
+        <h2>My Saved Custom Playlists</h2>
+      </div>
+
+      <div class="light-section" style="max-width: 650px; margin-bottom: 20px;">
+        <h3 style="font-size: 15px; color: #333333; margin-bottom: 8px;">Create New Custom Playlist</h3>
+        <form id="create-playlist-form" style="display: flex; gap: 8px;">
+          <input 
+            type="text" 
+            id="new-playlist-name" 
+            placeholder="Playlist name (e.g. End-Sem DBMS Revision, GATE 2027 CSE)..." 
+            required
+          >
+          <button type="submit" class="btn" style="white-space: nowrap;">+ Create</button>
+        </form>
+      </div>
+
+      <!-- Personal playlists cards container -->
+      <div id="playlists-container" class="playlist-grid">
+        <!-- Rendered dynamically by playlists.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>FocusTube</strong> - Distraction-Free YouTube Learning Portal for Engineering Students</p>
+    <p>College Mini-Project | HTML, CSS, JavaScript, Node.js, Express.js, MongoDB &amp; YouTube Data API v3</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/sample-data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/playlists.js"></script>
+</body>
+</html>
